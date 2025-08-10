@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Link } from "react-router-dom";
 import { 
   Facebook, 
   Twitter, 
@@ -13,8 +14,11 @@ import {
 
 const Footer = () => {
   const quickLinks = [
-    "About Us", "Contact", "Privacy Policy", "Terms of Service", 
-    "Advertise", "RSS Feed", "Newsletter", "Careers"
+    { name: "About Us", path: "/about" },
+    { name: "Contact", path: "/contact" },
+    { name: "Privacy Policy", path: "/privacy" },
+    { name: "Terms of Service", path: "/terms" },
+    { name: "Categories", path: "/categories" }
   ];
 
   const categories = [
@@ -31,12 +35,12 @@ const Footer = () => {
             <div className="flex items-center space-x-2">
               <div className="h-8 w-8 rounded-full bg-gradient-hero"></div>
               <h3 className="text-xl font-bold bg-gradient-hero bg-clip-text text-transparent">
-                Startup Pakistan
+                Bright Pakistan
               </h3>
             </div>
             <p className="text-sm text-muted-foreground">
-              Pakistan's leading source for startup news, technology updates, and business insights. 
-              Empowering entrepreneurs and keeping you informed about the latest developments.
+              Pakistan's leading source for tech news, business insights, and innovation updates. 
+              Inspiring progress and keeping you informed about the brightest developments across Pakistan.
             </p>
             <div className="flex space-x-3">
               <Button variant="ghost" size="icon">
@@ -62,10 +66,12 @@ const Footer = () => {
             <h4 className="font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-2">
               {quickLinks.map((link) => (
-                <li key={link}>
-                  <Button variant="ghost" className="p-0 h-auto text-sm text-muted-foreground hover:text-primary">
-                    {link}
-                  </Button>
+                <li key={link.name}>
+                  <Link to={link.path}>
+                    <Button variant="ghost" className="p-0 h-auto text-sm text-muted-foreground hover:text-primary">
+                      {link.name}
+                    </Button>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -103,7 +109,7 @@ const Footer = () => {
               <div className="space-y-1 text-sm text-muted-foreground">
                 <div className="flex items-center space-x-2">
                   <Mail className="h-3 w-3" />
-                  <span>contact@startuppakistan.com</span>
+                  <span>contact@brightpakistan.com</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <Phone className="h-3 w-3" />
@@ -120,18 +126,24 @@ const Footer = () => {
 
         <div className="border-t mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-sm text-muted-foreground">
-            © 2024 Startup Pakistan. All rights reserved.
+            © 2024 Bright Pakistan. All rights reserved.
           </p>
           <div className="flex space-x-4 mt-4 md:mt-0">
-            <Button variant="ghost" className="text-xs text-muted-foreground">
-              Privacy Policy
-            </Button>
-            <Button variant="ghost" className="text-xs text-muted-foreground">
-              Terms of Service
-            </Button>
-            <Button variant="ghost" className="text-xs text-muted-foreground">
-              Cookie Policy
-            </Button>
+            <Link to="/privacy">
+              <Button variant="ghost" className="text-xs text-muted-foreground hover:text-primary">
+                Privacy Policy
+              </Button>
+            </Link>
+            <Link to="/terms">
+              <Button variant="ghost" className="text-xs text-muted-foreground hover:text-primary">
+                Terms of Service
+              </Button>
+            </Link>
+            <Link to="/contact">
+              <Button variant="ghost" className="text-xs text-muted-foreground hover:text-primary">
+                Contact Us
+              </Button>
+            </Link>
           </div>
         </div>
       </div>

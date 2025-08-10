@@ -6,12 +6,12 @@ import heroStartup from "@/assets/hero-startup.jpg";
 const HeroSection = () => {
   const featuredArticle = {
     id: 1,
-    title: "Revolutionary AI Startup Raises $50M Series A to Transform Pakistani Tech Industry",
-    excerpt: "The breakthrough in artificial intelligence promises to revolutionize how businesses operate across Pakistan, with backing from international investors.",
+    title: "Pakistan's Tech Revolution: AI Innovation Leads Digital Transformation",
+    excerpt: "Breakthrough artificial intelligence developments are positioning Pakistan as a major player in the global tech landscape, with local innovations gaining international recognition.",
     author: "Sarah Ahmed",
     readTime: "5 min read",
     publishDate: "2 hours ago",
-    category: "Startup",
+    category: "Technology",
     image: heroStartup
   };
 

@@ -1,10 +1,12 @@
 import { Search, Menu, Bell, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
 
 const Header = () => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const location = useLocation();
 
   const categories = [
     { name: "Tech", color: "news-tech" },
@@ -23,12 +25,12 @@ const Header = () => {
             <Button variant="ghost" size="icon" className="md:hidden">
               <Menu className="h-5 w-5" />
             </Button>
-            <div className="flex items-center space-x-2">
+            <Link to="/" className="flex items-center space-x-2">
               <div className="h-8 w-8 rounded-full bg-gradient-hero"></div>
               <h1 className="text-xl font-bold bg-gradient-hero bg-clip-text text-transparent">
-                Startup Pakistan
+                Bright Pakistan
               </h1>
-            </div>
+            </Link>
           </div>
 
           <div className="flex items-center space-x-4">
@@ -59,24 +61,38 @@ const Header = () => {
 
         {/* Navigation */}
         <nav className="hidden md:flex h-12 items-center space-x-6 border-t">
-          <Button variant="ghost" className="font-medium">
-            Home
-          </Button>
-          {categories.map((category) => (
-            <Button
-              key={category.name}
-              variant="ghost"
-              className="font-medium hover:text-primary transition-fast"
+          <Link to="/">
+            <Button 
+              variant="ghost" 
+              className={`font-medium ${location.pathname === '/' ? 'text-primary' : ''}`}
             >
-              {category.name}
+              Home
             </Button>
-          ))}
-          <Button variant="ghost" className="font-medium">
-            Latest
-          </Button>
-          <Button variant="ghost" className="font-medium">
-            Trending
-          </Button>
+          </Link>
+          <Link to="/categories">
+            <Button 
+              variant="ghost" 
+              className={`font-medium hover:text-primary transition-fast ${location.pathname === '/categories' ? 'text-primary' : ''}`}
+            >
+              Categories
+            </Button>
+          </Link>
+          <Link to="/about">
+            <Button 
+              variant="ghost" 
+              className={`font-medium hover:text-primary transition-fast ${location.pathname === '/about' ? 'text-primary' : ''}`}
+            >
+              About
+            </Button>
+          </Link>
+          <Link to="/contact">
+            <Button 
+              variant="ghost" 
+              className={`font-medium hover:text-primary transition-fast ${location.pathname === '/contact' ? 'text-primary' : ''}`}
+            >
+              Contact
+            </Button>
+          </Link>
         </nav>
       </div>
     </header>
